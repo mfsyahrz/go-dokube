@@ -1,0 +1,45 @@
+# version that enable object deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: hello-deployment-1
+# deployment spec
+spec: 
+    # refer to pod to build
+  selector:
+    matchLabels:
+        name: hello-app1
+  # pod property
+  template:
+    metadata:
+      labels:
+        name: hello-app1
+    spec:
+        containers:
+            - name: helloworld
+              image: novalagung/hello-world:base
+              env:
+                - name: PORT
+                  value: "8080"
+                
+
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: my-app-deployment1
+# spec:
+#   selector:
+#     matchLabels:
+#       name: my-app1
+#   template:
+#     metadata:
+#       labels:
+#         name: my-app1
+#     spec:
+#       containers:
+#         - name: hello-world
+#           image: adamstudiodocker/udemy-praktis-belajar-docker-dan-kubernetes-untuk-pemula:hello-world
+#           env:
+#             - name: PORT
+#               value: "8080"
